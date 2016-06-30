@@ -27,10 +27,5 @@ Route::group(['middleware' => 'web'], function(){
 });
 
 
-Route::get('role',[
-   'middleware' => 'Role:editor',
-   'uses' => 'testController@index',
-]);
-
 // Route::get('/test', '\App\Signup\SignupController@signup');
 
