@@ -15,15 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::group(['middleware' => 'web'], function(){
 	Route::auth();
 
 	Route::get('/home', 'HomeController@index');
+	Route::get('/enquiry', function () {
+	    return view('enquiry');
+	});
+	Route::post('/enquiry', '\App\Enquiry\EnquiryController@entry');
 
+	//--ADMIN--//
 	Route::group(['prefix' => 'admin'], function(){
 		Route::get('/user', '\App\User\UserController@index');
 		Route::get('/post', '\App\Post\PostController@index');
 	});
+	//--ADMIN--//
 });
 
 
