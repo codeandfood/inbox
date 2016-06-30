@@ -15,4 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', '\App\Signup\SignupController@signup');
+Route::group(['middleware' => 'web'], function(){
+	Route::auth();
+
+	Route::get('/home', 'HomeController@index');
+
+	Route::group(['prefix' => 'admin'], function(){
+		Route::get('/user', '\App\User\UserController@index');
+		Route::get('/post', '\App\Post\PostController@index');
+	});
+});
+
+
+Route::get('role',[
+   'middleware' => 'Role:editor',
+   'uses' => 'testController@index',
+]);
+
+// Route::get('/test', '\App\Signup\SignupController@signup');
+
