@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/et', '\App\Enquiry\EnquiryController@test');
 
 Route::group(['middleware' => 'web'], function(){
 	Route::auth();

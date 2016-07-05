@@ -12,6 +12,7 @@ use Log;
 use Validator;
 use Exception;
 use Response;
+use Mail;
 
 class EnquiryController extends Controller
 {
@@ -48,6 +49,14 @@ class EnquiryController extends Controller
 	            	throw new Exception("Sorry value not stored", 1);
 	            else:
 					Log::info('Value entered into database');
+
+					$maildata['name'] = $request['name'];
+					$maildata['message'] = $request['message'];
+					Mail::send('emails.enquiryUserMail', $maildata, function ($message) {
+					    $message->from('codeandfood@gmail.com', 'HotelsPondy WebPage');
+					    $message->to('codeandfood@gmail.com')->subject('Someone views the page');
+					});
+
 	            	$response['status']='success';
 	            	$response['message']="Successfully value stored";
 	            	return Response::json($response);
