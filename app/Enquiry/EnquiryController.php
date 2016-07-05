@@ -11,13 +11,15 @@ use App\Enquiry\EnquiryModel;
 use Log;
 use Validator;
 use Exception;
+use Response;
 
 class EnquiryController extends Controller
 {
 	public function __construct(){
 		Log::info(__CLASS__.'====>');
 	}
-    public function index(){
+
+	public function index(){
 		return view('admins.enquiry.home');
 	}
 
@@ -48,7 +50,7 @@ class EnquiryController extends Controller
 					Log::info('Value entered into database');
 	            	$response['status']='success';
 	            	$response['message']="Successfully value stored";
-	            	return $response;
+	            	return Response::json($response);
 	            endif;
 	        }
 		}catch(Exception $e){
@@ -57,7 +59,7 @@ class EnquiryController extends Controller
 			Log::error("File: ".$e->getLine());
 			$response['status']='error';
 			$response['message']=$e->getMessage();
-			return $response;
+			return Response::json($response);
 		}
 
 	}
