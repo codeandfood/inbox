@@ -1,11 +1,11 @@
 
-app.controller('enquiryController',function($scope,$http){
+app.controller('EnquiryController',function($scope,$http){
 	$scope.enquiry={};
 
 	$scope.submitform=function(){
 		$http({
         	    method: 'POST',
-            	url:'/enquiry' ,
+            	url:'enquiry' ,
             	data: $.param($scope.enquiry),
             	headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         	}).success(function(response) {

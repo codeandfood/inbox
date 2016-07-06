@@ -6,7 +6,10 @@
 <!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html> <!--<![endif]-->
 <head>
-<?php $asset = 'resources/assets/theme1/'?>
+<?php 
+$asset = 'resources/assets/theme1/';
+$asset1 = 'resources/assets/';
+?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
@@ -319,7 +322,7 @@
 	</div>
 	
 	<div id="enquiry" class="content-section-c ">
-		<div class="container" ng-app="EnquiryApp">
+		<div class="container" ng-app="EnquiryApp" ng-controller="EnquiryController">
 			<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center white">
 				<h2>Get Live Updates</h2>
@@ -333,12 +336,13 @@
 								<div>
 									<div class="content-style-form content-style-form-4 ">
 										<h2 class="morph-clone">Enquiry</h2>
-										<form>
-											<p><label>Email Address</label><input type="text"/></p>
-											<p><label>Name</label><input type="text"/></p>
-											<p><label>Mobile</label><input type="text"/></p>
-											<p><label>Message</label><textarea></textarea></p>
-											<p><button>Send</button></p>
+										<form ng-submit="submitform()">
+											<p><label>Email Address</label><input type="text" ng-model='enquiry.email'/></p>
+											<p><label>Name</label><input type="text" ng-model='enquiry.name'/></p>
+											<p><label>Mobile</label><input type="text" ng-model='enquiry.mobile'/></p>
+											<p><label>Message</label><textarea ng-model='enquiry.message'></textarea></p>
+											<!-- <p><button type="submit">Send</button></p> -->
+											<input type="submit" value="Send"/>
 										</form>
 										<style type="text/css">
 											textarea{
@@ -547,6 +551,9 @@
     <script src="{{$asset}}js/bootstrap.js"></script>
 	<script src="{{$asset}}js/owl.carousel.js"></script>
 	<script src="{{$asset}}js/script.js"></script>
+	<script src="{{$asset1}}js/angular.1.5.7.min.js"></script>
+	<script src="public/app/app.js"></script>
+	<script src="public/app/controllers/enquiry.js"></script>
 	<!-- StikyMenu -->
 	<script src="{{$asset}}js/stickUp.min.js"></script>
 	<script type="text/javascript">
