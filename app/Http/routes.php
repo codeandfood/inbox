@@ -11,11 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
 Route::get('/et', '\App\Enquiry\EnquiryController@test');
+Route::get('/', function () {
+    return view('theme1.home');
+});
 
 Route::group(['middleware' => 'web'], function(){
 	Route::auth();
