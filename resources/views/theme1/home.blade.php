@@ -336,13 +336,15 @@ $asset1 = 'resources/assets/';
 								<div>
 									<div class="content-style-form content-style-form-4 ">
 										<h2 class="morph-clone">Enquiry</h2>
-										<form ng-submit="submitform()">
-											<p><label>Email Address</label><input type="text" ng-model='enquiry.email'/></p>
+										<form>
 											<p><label>Name</label><input type="text" ng-model='enquiry.name'/></p>
+											<p><label>Email Address</label><input type="text" ng-model='enquiry.email' ng/></p>
 											<p><label>Mobile</label><input type="text" ng-model='enquiry.mobile'/></p>
 											<p><label>Message</label><textarea ng-model='enquiry.message'></textarea></p>
-											<!-- <p><button type="submit">Send</button></p> -->
-											<input type="submit" value="Send"/>
+											<p><button type="submit" ng-click="submitform()">Send</button></p>
+											<span ng-show="success">[[ message ]]</span>
+											<span ng-show="error">[[ message ]]</span>
+											<!-- <input type="submit" value="Send"/> -->
 										</form>
 										<style type="text/css">
 											textarea{
