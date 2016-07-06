@@ -51,7 +51,7 @@ class EnquiryController extends Controller
 					Log::info('Value entered into database');
 
 					$maildata['name'] = $request['name'];
-					$maildata['message'] = $request['message'];
+					$maildata['user_message'] = $request['message'];
 					Mail::send('emails.enquiryUserMail', $maildata, function ($message) {
 					    $message->from('codeandfood@gmail.com', 'HotelsPondy WebPage');
 					    $message->to('codeandfood@gmail.com')->subject('Someone views the page');

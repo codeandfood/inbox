@@ -7,7 +7,7 @@
 <h2>{{$name}}</h2>
 
 <div>
-    {!! $message !!}
+    {{ $user_message }}
 </div>
 
 </body>
