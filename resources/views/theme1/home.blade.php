@@ -100,8 +100,8 @@ $asset1 = 'resources/assets/';
 				<ul class="nav navbar-nav">
 					
 					<li class="menuItem"><a href="#whatis">What is?</a></li>
-					<li class="menuItem"><a href="#useit">Use It</a></li>
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
+					<li class="menuItem"><a href="#Aboutus">About us</a></li>
 					<li class="menuItem"><a href="#enquiry">Enquiry</a></li>
 					<li class="menuItem"><a href="#credits">Credits</a></li>
 					<li class="menuItem"><a href="#contact">Contact</a></li>
@@ -174,35 +174,7 @@ $asset1 = 'resources/assets/';
 		</div>
 	</div>
 	
-	<!-- Use it -->
-    <div id ="useit" class="content-section-a">
-
-        <div class="container">
-			
-            <div class="row">
-			
-				<div class="col-sm-6 pull-right wow fadeInRightBig">
-                    <img class="img-responsive " src="{{$asset}}img/ipad.png" alt="">
-                </div>
-				
-                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
-                    <h3 class="section-heading">Full Responsive</h3>
-					<div class="sub-title lead3">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
-                    <p class="lead">
-						In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. 
-						Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, 
-						uam non erat mirum sapientiae lorem cupido
-						patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.
-					</p>
-
-					 <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
-					 <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
-				</div>   
-            </div>
-        </div>
-        <!-- /.container -->
-    </div>
-
+	
     <div class="content-section-b"> 
 		
 		<div class="container">
@@ -324,18 +296,48 @@ $asset1 = 'resources/assets/';
 
 
 	</div>
+
+	<!-- About us -->
+    <div id ="Aboutus" class="content-section-a">
+
+        <div class="container">
+			
+            <div class="row">
+			
+				<div class="col-sm-6 pull-right wow fadeInRightBig">
+                    <img class="img-responsive " src="{{$asset}}img/ipad.png" alt="">
+                </div>
+				
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
+                    <h3 class="section-heading">About us</h3>
+					<div class="sub-title lead3">We make clients meet hotels<br>You will not regret it.</div>
+                    <p class="lead">
+                    	Finding a good place to stay for the treat that is Pondicherry can make or break all the potential experiences that you can have.</br>
+						Our goal is to satisfy You as best as possible by making sure that You get your desired hotels along with numerous services that will make your experience in Pondicherry worth more than you expected.</br>
+						We have contact with many hotels and we can find any hotel to your preference. So just send your desired hotel by the enquiry service that you can find just below and we will immediately start processing your demand.  
+					</p>
+
+					 <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
+					 <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
+				</div>   
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+
 	
+	<!-- Enquiry -->
 	<div id="enquiry" class="content-section-c ">
 		<div class="container" ng-app="EnquiryApp" ng-controller="EnquiryController">
 			<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center white">
-				<h2>Get Live Updates</h2>
-				<p class="lead" style="margin-top:0">A special thanks to Death.</p>
+				<h2>Enquiry Service</h2>
+				<p class="lead" style="margin-top:0">Send the details of the hotel you want.</p>
 			 </div>
 			<div class="col-md-6 col-md-offset-3 text-center">
 				<div class="mockup-content">
 						<div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-							<button type="button "><span>Subscribe to our Newsletter</span></button>
+							<button type="button "><span>Send an enquiry</span></button>
 							<div class="morph-content">
 								<div>
 									<div class="content-style-form content-style-form-4 ">
@@ -346,8 +348,8 @@ $asset1 = 'resources/assets/';
 											<p><label>Mobile</label><input type="text" ng-model='enquiry.mobile'/></p>
 											<p><label>Message</label><textarea ng-model='enquiry.message'></textarea></p>
 											<p><button type="submit" ng-click="submitform()">Send</button></p>
-											<span ng-show="error">[[ message ]]</span>
-											<span ng-show="success">[[ message ]]</span>
+											<p style="text-align:center;color:red;font-size:90%;padding:2px"><span ng-show="error">[[ message ]]</span>
+											<span ng-show="success">[[ message ]]</span></p>
 											<!-- <input type="submit" value="Send"/> -->
 										</form>
 										<style type="text/css">
@@ -455,7 +457,7 @@ $asset1 = 'resources/assets/';
 			
 			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
 				<h2>Contact Us</h2>
-				<p class="lead" style="margin-top:0">A special thanks to Death.</p>
+				<p class="lead" style="margin-top:0">For any questions on our services.</p>
 			</div>
 			
 			<form role="form" action="" method="post" >
@@ -492,10 +494,11 @@ $asset1 = 'resources/assets/';
 				<div class="col-md-5 col-md-push-1 address">
 					<address>
 					<h3>Office Location</h3>
-					<p class="lead"><a href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">The Pentagon<br>
-					Washington, DC 20301</a><br>
-					Phone: XXX-XXX-XXXX<br>
-					Fax: XXX-XXX-YYYY</p>
+					<p class="lead"><a href="https://www.google.co.in/maps/place/Natura+Web+Solutions/@11.943014,79.830072,15z/data=!4m2!3m1!1s0x0:0x67bed306fece1585?sa=X&ved=0ahUKEwipkpSi4uXNAhUBNY8KHcjqCAQQ_BIIXjAK">Natura Web Solutions<br>
+					Ponniamman DP Near, 18, Senganniamman Koil St, Samipillai Thottam, Muthialpet, Puducherry, 605003
+					</a><br>
+					Phone: 0413-2211045<br>
+					<!-- Fax: XXX-XXX-YYYY --></p>
 					</address>
 
 					<h3>Social</h3>
