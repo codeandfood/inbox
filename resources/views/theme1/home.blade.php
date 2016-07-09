@@ -15,7 +15,7 @@ $asset1 = 'resources/assets/';
     <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
     <meta name="author" content="">
 
-    <title>HotelsPondy – Free Flat and Responsive HTML5 Template</title>
+    <title>HotelsPondy</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{$asset}}css/bootstrap.min.css" rel="stylesheet">
@@ -61,14 +61,18 @@ $asset1 = 'resources/assets/';
 	
 	<!-- FullScreen -->
     <div class="intro-header">
+    <a href="login" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s" style="float:right;margin:10px;"><span>Sign in</span></a>
+	<a href="register" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s" style="float:right;margin:10px;"><span>Register</span></a>
 		<div class="col-xs-12 text-center abcen1">
 			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">HotelsPondy</h1>
-			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Clean & minimal Theme</h3>
+			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Find all hotels in Pondy</h3>
 			<ul class="list-inline intro-social-buttons">
 				<li><a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Twitter</span></a>
 				</li>
-				<li id="download" ><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Free Download</span></a>
+				<li><a href="https://www.facebook.com/profile.php?id=100011283181723" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Facebook</span></a>
 				</li>
+<!-- 				<li id="download" ><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Free Download</span></a>
+				</li> -->
 			</ul>
 		</div>    
         <!-- /.container -->
@@ -89,7 +93,7 @@ $asset1 = 'resources/assets/';
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#home">Flatfy</a>
+				<a class="navbar-brand" href="#home">HotelsPondy</a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
@@ -342,8 +346,8 @@ $asset1 = 'resources/assets/';
 											<p><label>Mobile</label><input type="text" ng-model='enquiry.mobile'/></p>
 											<p><label>Message</label><textarea ng-model='enquiry.message'></textarea></p>
 											<p><button type="submit" ng-click="submitform()">Send</button></p>
-											<span ng-show="success">[[ message ]]</span>
 											<span ng-show="error">[[ message ]]</span>
+											<span ng-show="success">[[ message ]]</span>
 											<!-- <input type="submit" value="Send"/> -->
 										</form>
 										<style type="text/css">
