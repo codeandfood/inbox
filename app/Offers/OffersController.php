@@ -46,16 +46,18 @@ class OffersController extends Controller
 	            $offers = new OffersModel();
 	            $offers->offername = $request['name'];
 	            $offers->offercontent = $request['content'];
-	            $offers->startingdate = $request['starting date'];
-	            $offers->enddate = $request['end date'];
+	            $offers->startingdate = $request['startingdate'];
+	            $offers->enddate = $request['enddate'];
 	            $offers->price = $request['price'];
 	            $offers->mobile = $request['mobile'];
 	            $offers->email = $request['email'];
+	            $offers->imagename = $request->name.'.'.$request->file('image')->getClientOriginalExtension();	
 	            $result = $offers->save();
 
-	            $image=$offers->id.'.'.$request->file('image')->getClientOriginalExtension();
+	            $image=$request->file('image');
+	            $imagename=$request->name.'.'.$image->getClientOriginalExtension();	
+	            $request->file('image')->move(base_path().'/public/images/lailascounty/',$imagename);
 
-	            $request->file('image')->move(base_path().'/public/images/lailascounty/',$image);
 	            if(!$result):
 	            	throw new Exception("Sorry value not stored", 1);
 	            else:
@@ -83,4 +85,13 @@ class OffersController extends Controller
 		}
 
 	}
+
+	function getOffers(Request $request){
+    	$offers = OffersModel::where('property_id', $request->id)->get();
+    	foreach ($offers as $key => $value) {
+    		$response[$key]['offer_name'] = $value['offername'];
+    		$response[$key]['offer_content'] = $value['offercontent'];
+    	}
+    	return Response::json($response);
+    }
 }

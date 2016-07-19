@@ -61,8 +61,18 @@ $asset1 = 'resources/assets/';
 	
 	<!-- FullScreen -->
     <div class="intro-header">
+
+    @if (Auth::guest())
     <a href="login" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s" style="float:right;margin:10px;"><span>Sign in</span></a>
 	<a href="register" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s" style="float:right;margin:10px;"><span>Register</span></a>
+	@endif
+
+	@if (Auth::user())
+	<a href="dashboard" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s" style="float:right;margin:10px;"><span>Dashboard</span></a>
+	@endif
+	
+
+
 		<div class="col-xs-12 text-center abcen1">
 			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">HotelsPondy</h1>
 			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Find all hotels in Pondy</h3>

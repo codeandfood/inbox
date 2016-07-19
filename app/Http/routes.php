@@ -24,7 +24,7 @@ Route::group(['middleware' => 'web'], function(){
 	Route::auth();
 
 	// Route::get('/home', 'HomeController@index');
-	Route::get('/home', 'HomeController@clientDashboard');
+	Route::get('/dashboard', 'HomeController@clientDashboard');
 	Route::get('/enquiry', function () {
 	    return view('enquiry');
 	});
@@ -45,9 +45,7 @@ Route::group(['middleware' => 'web'], function(){
 	Route::get('/account', function () {
 	    return view('account');
 	});
-	Route::get('/dashboard', function () {
-	    return view('dashboard');
-	});
+
 	//--Laila's county--/
 
 });
@@ -55,3 +53,6 @@ Route::group(['middleware' => 'web'], function(){
 
 // Route::get('/test', '\App\Signup\SignupController@signup');
 
+Route::group(['prefix' => 'api'], function(){
+	Route::get('/offers/{id}', '\App\Offers\OffersController@getOffers');
+});

@@ -21,6 +21,7 @@ class CreateOffersTable extends Migration
             $table->string('price');
             $table->string('mobile',20);
             $table->string('email');
+            $table->string('imagename');
             $table->timestamps();
         });
     }
