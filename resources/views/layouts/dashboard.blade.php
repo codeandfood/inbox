@@ -50,7 +50,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/account') }}">Account</a></li>
                     <li><a href="{{ url('/offers') }}">Offers</a></li>
-                    <li><a href="{{ url('/offers') }}">Edit Offers</a></li>
+                    <li><a href="{{ url('/offer_list') }}">Edit/Delete Offers</a></li>
                 </ul>
                  @endif
 
