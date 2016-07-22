@@ -38,31 +38,31 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('startingdate') ? ' has-error' : '' }}">
-                            <label for="startingdate" class="col-md-4 control-label">Starting date</label>
+                        <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
+                            <label for="start_date" class="col-md-4 control-label">Start date</label>
 
                             <div class="col-md-6">
 <!--                                 <textarea id="starting date" class="form-control" name="starting date"></textarea> -->
-                                <input class="form-control" type="date" name="startingdate" id="startingdate" >
+                                <input class="form-control" type="date" name="start_date" id="start_date" >
 
-                                @if ($errors->has('startingdate'))
+                                @if ($errors->has('start_date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('startingdate') }}</strong>
+                                        <strong>{{ $errors->first('start_date') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('enddate') ? ' has-error' : '' }}">
-                            <label for="enddate" class="col-md-4 control-label">End date</label>
+                        <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
+                            <label for="end_date" class="col-md-4 control-label">End date</label>
 
                             <div class="col-md-6">
 <!--                                 <textarea id="starting date" class="form-control" name="starting date"></textarea> -->
-                                <input class="form-control" type="date" name="enddate" id="edate" >
+                                <input class="form-control" type="date" name="end_date" id="end_date" >
 
-                                @if ($errors->has('enddate'))
+                                @if ($errors->has('end_date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('enddate') }}</strong>
+                                        <strong>{{ $errors->first('end_date') }}</strong>
                                     </span>
                                 @endif
                             </div>

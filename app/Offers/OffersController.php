@@ -32,8 +32,8 @@ class OffersController extends Controller
 			$validator = Validator::make($request->all(), [
 	            'name' => 'required|max:50',
 	            'content' => 'required',
-	            'startingdate' => 'required|date',
-	            'enddate' => 'required|date',
+	            'start_date' => 'required|date',
+	            'end_date' => 'required|date',
 	            'image' => 'required',
 	            'price' => 'required',
 	            'mobile' => 'required|max:20',
@@ -44,14 +44,14 @@ class OffersController extends Controller
 	            throw new Exception($validator->errors()->all()[0], 1);
 	        }else{
 	            $offers = new OffersModel();
-	            $offers->offername = $request['name'];
-	            $offers->offercontent = $request['content'];
-	            $offers->startingdate = $request['startingdate'];
-	            $offers->enddate = $request['enddate'];
+	            $offers->offer_name = $request['name'];
+	            $offers->offer_content = $request['content'];
+	            $offers->start_date = $request['start_date'];
+	            $offers->end_date = $request['end_date'];
 	            $offers->price = $request['price'];
 	            $offers->mobile = $request['mobile'];
 	            $offers->email = $request['email'];
-	            $offers->imagename = $request->name.'.'.$request->file('image')->getClientOriginalExtension();	
+	            $offers->image_name = $request->name.'.'.$request->file('image')->getClientOriginalExtension();	
 	            $result = $offers->save();
 
 	            $image=$request->file('image');
@@ -86,11 +86,26 @@ class OffersController extends Controller
 
 	}
 
+	/**
+	* 
+	*/
 	function getOffers(Request $request){
     	$offers = OffersModel::where('property_id', $request->id)->get();
-    	foreach ($offers as $key => $value) {
-    		$response[$key]['offer_name'] = $value['offername'];
-    		$response[$key]['offer_content'] = $value['offercontent'];
+    	foreach ($offers as $key => $value) 
+    	{
+    		$time = time();
+    		$edata = strtotime($value['end_date']);
+
+    		if($time < $edata)
+    		{
+	    		$response[$key]['offer_name'] = $value['offer_name'];
+	    		$response[$key]['offer_content'] = $value['offer_content'];
+	    		$response[$key]['offer_price'] = $value['price'];
+	    		$response[$key]['offer_start_date'] = $value['start_date'];
+	    		$response[$key]['offer_end_date'] = $value['end_date'];
+	    		$response[$key]['offer_contact'] = $value['mobile'];
+	    		$response[$key]['offer_image'] = $value['image_name'];
+    		}
     	}
     	return Response::json($response);
     }
