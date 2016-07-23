@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="container">
+<div class="container" ng-app="editofferApp" ng-controller="EditOfferController">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -31,7 +31,7 @@
                                 <td><?=$value->end_date;?></td>
                                 <td><?=$value->mobile;?></td>
                                 <td><?=$value->price;?></td>
-                                <td><a href="offers/<?=$value->id;?>/edit"><button type="submit">Edit</button><br><button type="submit">Delete</button></a></td>
+                                <td><a href="offers/<?=$value->id;?>/edit"><button type="submit">Edit</button></a><br><button ng-click="confirmDelete(2)">Delete</button></td>
                             </tr>
                             @endforeach
                         </table>

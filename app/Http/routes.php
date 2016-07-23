@@ -46,7 +46,7 @@ Route::group(['middleware' => 'web'], function(){
 	// Route::put('/offers/{id}', '\App\Offers\OffersController@update');
 	// Route::delete('/offers/{id}', '\App\Offers\OffersController@delete');
 	Route::resource('offers','\App\Offers\OffersController');
-	Route::post('offers/{id}/update','\App\Offers\OffersController@update');
+	Route::post('offers/{id}','\App\Offers\OffersController@update');
 	Route::get('/offer_list','\App\Offers\OffersController@offerList');
 	Route::get('/account', function () {
 	    return view('account');

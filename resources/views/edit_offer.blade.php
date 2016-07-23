@@ -8,9 +8,9 @@
 
                 @if($offer)
                 <div class="panel-heading">Edit Offer</div>
-                <div class="panel-body">
+                <div class="panel-body" ng-app="editofferApp" ng-controller="EditOfferController">
                     <div class="col-md-7">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/offers/') }}/{{$offer->id}}/update" enctype="multipart/form-data" >
+                    <form ><!-- class="form-horizontal" role="form" method="POST" action="{{ url('/offers/') }}/{{$offer->id}}/update" enctype="multipart/form-data" > -->
 
                         {{ csrf_field() }}
 
@@ -18,7 +18,7 @@
                             <label for="name" class="col-md-4 control-label">Offer name</label>
 
                             <div class="col-md-8">
-                                <input id="name" type="text" class="form-control" name="name" value="{{$offer->offer_name}}">
+                                <input id="name" type="text" class="form-control" name="name" ng-init="offer.name='{{$offer->offer_name}}'" ng-model='offer.name'>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -32,7 +32,7 @@
                             <label for="content" class="col-md-4 control-label">Content</label>
 
                             <div class="col-md-8">
-                                <textarea id="content" class="form-control" name="content" >{{$offer->offer_content}}</textarea>
+                                <textarea id="content" class="form-control" name="content" ng-model="offer.content" ng-init="offer.content='{{$offer->offer_content}}'" ></textarea>
                                 @if ($errors->has('content'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
@@ -46,7 +46,7 @@
 
                             <div class="col-md-8">
 <!--                                 <textarea id="starting date" class="form-control" name="starting date"></textarea> -->
-                                <input class="form-control" type="date" name="start_date" id="start_date" value="{{$offer->start_date}}">
+                                <input class="form-control" type="date" name="start_date" id="start_date" ng-init="offer.start_date='{{$offer->start_date}}'" ng-model="offer.start_date">
 
                                 @if ($errors->has('start_date'))
                                     <span class="help-block">
@@ -61,7 +61,7 @@
 
                             <div class="col-md-8">
 <!--                                 <textarea id="starting date" class="form-control" name="starting date"></textarea> -->
-                                <input class="form-control" type="date" name="end_date" id="end_date" value="{{$offer->end_date}}">
+                                <input class="form-control" type="date" name="end_date" id="end_date" ng-init="offer.end_date='{{$offer->end_date}}'" ng-model="offer.end_date">
 
                                 @if ($errors->has('end_date'))
                                     <span class="help-block">
@@ -91,7 +91,7 @@
                             <label for="price" class="col-md-4 control-label">Price</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="number" name="price" id="price" value="{{$offer->price}}">
+                                <input class="form-control" type="number" name="price" id="price" ng-init="offer.price='{{$offer->price}}'" ng-model="offer.price">
 
                                 @if ($errors->has('price'))
                                     <span class="help-block">
@@ -105,7 +105,7 @@
                             <label for="mobile" class="col-md-4 control-label">Mobile number</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="text" name="mobile" id="mobile" value="{{$offer->mobile}}">
+                                <input class="form-control" type="text" name="mobile" id="mobile"  ng-init="offer.mobile='{{$offer->mobile}}'" ng-model="offer.mobile">
 
                                 @if ($errors->has('mobile'))
                                     <span class="help-block">
@@ -119,7 +119,7 @@
                             <label for="email" class="col-md-4 control-label">Email</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="email" name="email" id="email" value="{{$offer->email}}">
+                                <input class="form-control" type="email" name="email" id="email" ng-init="offer.email='{{$offer->email}}'" ng-model="offer.email">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -132,9 +132,11 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Post
+                                <button type="submit" class="btn btn-primary" ng-click="edit({{$offer->id}})">
+                                    <i class="fa fa-btn fa-user"></i> Edit
                                 </button>
+                                <p style="text-align:center;color:red;font-size:90%;padding:2px"><span ng-show="error">[[ message ]]</span>
+                                    <span ng-show="success">[[ message ]]</span></p>
                             </div>
                         </div>
                     </form>

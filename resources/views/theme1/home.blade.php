@@ -42,8 +42,7 @@ $asset1 = 'resources/assets/';
 	<!--[if IE 9]>
 		<script src="js/PIE_IE9.js"></script>
 	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="js/PIE_IE678.js"></script>
+	<!--[if lt IE 	<script src="js/PIE_IE678.js"></script>
 	<![endif]-->
 
 	<!--[if lt IE 9]>

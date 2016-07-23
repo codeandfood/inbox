@@ -37,7 +37,7 @@ class OffersController extends Controller
 	            'name' => 'required|max:50',
 	            'content' => 'required',
 	            'start_date' => 'required|date',
-	            'end_date' => 'required|date',
+	            'end_date' => 'required|date|after:start_date',
 	            'image' => 'required',
 	            'price' => 'required',
 	            'mobile' => 'required|max:20',
@@ -83,8 +83,8 @@ class OffersController extends Controller
 
 	}
 
-	function show(request $request){
-		$offer = OffersModel::where('id', $request->id)->get();
+	function show($id){
+		$offer = OffersModel::where('id', $id)->get();
 		return View::make('show')->with('offer',$offer);
 	}
 
@@ -113,11 +113,15 @@ class OffersController extends Controller
     }
 
     function edit($id){
+    	Log::info(__FUNCTION__.'====>');
+
     	$offer = OffersModel::where('id',$id)->first();
     	return View::make('edit_offer')->with('offer',$offer);
     }
 
-    function update(request $request){
+    function update($id,request $request){
+
+    	Log::info(__FUNCTION__.'====>');
     	$rules=array(
     		'name' => 'required|max:50',
 	        'content' => 'required',
@@ -134,7 +138,7 @@ class OffersController extends Controller
 	            throw new Exception($validator->errors()->all()[0], 1);
 	        }
 	    	else{
-	    		$offers= OffersModel::where('id',$request->id)->first();
+	    		$offers= OffersModel::where('id',$id)->first();
 	    		$offers->offer_name = $request['name'];
 	            $offers->offer_content = $request['content'];
 	            $offers->start_date = $request['start_date'];
@@ -155,6 +159,7 @@ class OffersController extends Controller
 
 	            if(!$result):
 	            	throw new Exception("Sorry value not edited", 1);
+	            	Log::info('Edited values not entered into database');
 	            else:
 					Log::info('Edited values entered into database');
 	            	$response['status']='success';
@@ -172,11 +177,14 @@ class OffersController extends Controller
 		}
 	}
 
-    function delete(request $request){
-    	OffersModel::where('id',$request->id)->delete();
+    function delete($id){
+    	Log::info(__FUNCTION__.'====>');
+    	
+    	OffersModel::where('id',$id)->delete();
     }
 
     function offerList(){
+
     	$user = Auth::user();
     	$property = Properties::where('user_id', $user->id)->first();
     	$offer = OffersModel::where('property_id',$property->id)->get();
