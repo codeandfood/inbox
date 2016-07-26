@@ -8,7 +8,7 @@
 
                 @if($offer)
                 <div class="panel-heading">Edit Offer</div>
-                <div class="panel-body" ng-app="editofferApp" ng-controller="EditOfferController">
+                <div class="panel-body" ng-app="EditDeleteOfferApp" ng-controller="EditDeleteOfferController">
                     <div class="col-md-7">
                     <form ><!-- class="form-horizontal" role="form" method="POST" action="{{ url('/offers/') }}/{{$offer->id}}/update" enctype="multipart/form-data" > -->
 

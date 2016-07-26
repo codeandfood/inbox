@@ -3,7 +3,8 @@ var app=angular.module('EnquiryApp',[],function($interpolateProvider){
 	$interpolateProvider.endSymbol(']]');
 });
 
-var edit_offer = angular.module('editofferApp', [], function($interpolateProvider) {
+var edit_delete_offer = angular.module('EditDeleteOfferApp', [], function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
+

@@ -1,23 +1,4 @@
-// edit_offer.controller('EditOfferController',function($scope,$http){
-
-//     $scope.offer = {};
-
-//     $scope.edit = function(){
-//         $http.put('offers/1',{
-//             name: $scope.offer.name,
-//             content: $scope.offer.content,
-//             start_date: $scope.offer.start_date,
-//             end_date: $scope.offer.end_date,
-//             price: $scope.offer.price,
-//             mobile: $scope.offer.mobile,
-//             email: $scope.offer.email
-//         }).success(function(data,status,headers,config){
-//             console.log(data);
-//         });
-//     };
-// });
-
-edit_offer.controller('EditOfferController',function($scope,$http){
+edit_delete_offer.controller('EditDeleteOfferController',function($scope,$http){
     $scope.offer={};
 
     $scope.edit=function(id){

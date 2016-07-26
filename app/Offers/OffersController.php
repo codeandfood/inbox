@@ -177,7 +177,7 @@ class OffersController extends Controller
 		}
 	}
 
-    function delete($id){
+    function destroy($id){
     	Log::info(__FUNCTION__.'====>');
     	
     	OffersModel::where('id',$id)->delete();
