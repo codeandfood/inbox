@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEnquiryTable extends Migration
+class CreateUserAuthTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,11 @@ class CreateEnquiryTable extends Migration
      */
     public function up()
     {
-        Schema::create('enquiry', function (Blueprint $table) {
+        Schema::create('user_auth', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',50);
-            $table->string('email');
-            $table->string('mobile',20);
-            $table->text('message');
-            $table->string('from');
+            $table->integer('user_id');
+            $table->string('auth_key');
+            $table->string('auth_secret');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateEnquiryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('enquiry');
+        Schema::drop('user_auth');
     }
 }

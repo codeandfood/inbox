@@ -48,8 +48,8 @@ class OffersController extends Controller
 	            throw new Exception($validator->errors()->all()[0], 1);
 	        }else{
 	            $offers = new OffersModel();
-	            $offers->offer_name = $request['name'];
-	            $offers->offer_content = $request['content'];
+	            $offers->name = $request['name'];
+	            $offers->content = $request['content'];
 	            $offers->start_date = $request['start_date'];
 	            $offers->end_date = $request['end_date'];
 	            $offers->price = $request['price'];
@@ -98,15 +98,20 @@ class OffersController extends Controller
     		$time = time();
     		$edata = strtotime($value['end_date']);
 
+    		$response['count'] = count($offers);
     		if($time < $edata)
     		{
-	    		$response[$key]['offer_name'] = $value['offer_name'];
-	    		$response[$key]['offer_content'] = $value['offer_content'];
-	    		$response[$key]['offer_price'] = $value['price'];
-	    		$response[$key]['offer_start_date'] = $value['start_date'];
-	    		$response[$key]['offer_end_date'] = $value['end_date'];
-	    		$response[$key]['offer_contact'] = $value['mobile'];
-	    		$response[$key]['offer_image'] = $value['image_name'];
+	    		$response['offers'][$key]['offer_name'] = $value['name'];
+	    		$response['offers'][$key]['offer_content'] = $value['content'];
+	    		$response['offers'][$key]['offer_price'] = $value['price'];
+	    		$response['offers'][$key]['offer_start_date'] = $value['start_date'];
+	    		$response['offers'][$key]['offer_end_date'] = $value['end_date'];
+	    		$response['offers'][$key]['offer_contact'] = $value['mobile'];
+	    		$response['offers'][$key]['offer_image'] = $value['image_name'];
+    		}
+    		else{
+    			$response['count'] = 0;
+    			$response['message'] = 'No offers found.';
     		}
     	}
     	return Response::json($response);
@@ -139,8 +144,8 @@ class OffersController extends Controller
 	        }
 	    	else{
 	    		$offers= OffersModel::where('id',$id)->first();
-	    		$offers->offer_name = $request['name'];
-	            $offers->offer_content = $request['content'];
+	    		$offers->name = $request['name'];
+	            $offers->content = $request['content'];
 	            $offers->start_date = $request['start_date'];
 	            $offers->end_date = $request['end_date'];
 	            $offers->price = $request['price'];

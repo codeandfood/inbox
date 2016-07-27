@@ -25,8 +25,8 @@
 
                             @foreach($offer as $key => $value)
                             <tr>
-                                <td><?=$value->offer_name;?></td>
-                                <td><?=$value->offer_content;?></td>
+                                <td><?=$value->name;?></td>
+                                <td><?=$value->content;?></td>
                                 <td><?=$value->start_date;?></td>
                                 <td><?=$value->end_date;?></td>
                                 <td><?=$value->mobile;?></td>
