@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php 
+$asset = 'http://localhost/hotelspondy/resources/assets/theme1/';
+$asset1 = 'http://localhost/hotelspondy/resources/assets/';
+?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +29,48 @@
         }
     </style>
 
-    <?php 
-$asset = 'http://localhost/hotelspondy/resources/assets/theme1/';
-$asset1 = 'http://localhost/hotelspondy/resources/assets/';
-?>
+    <link rel="stylesheet" href="{{$asset}}css/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="{{$asset1}}js/jquery-1.12.4.js"></script>
+    <script src="{{$asset1}}js/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        var dateFormat = "mm/dd/yy",
+          from = $( "#from" )
+            .datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              numberOfMonths: 3
+            })
+            .on( "change", function() {
+              to.datepicker( "option", "minDate", getDate( this ) );
+            }),
+          to = $( "#to" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 3
+          })
+          .on( "change", function() {
+            from.datepicker( "option", "maxDate", getDate( this ) );
+          });
+     
+        function getDate( element ) {
+          var date;
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+     
+          return date;
+        }
+      } );
+    </script>
+
+ 
+
+ 
+
   
 </head>
 <body id="app-layout">
@@ -55,6 +97,7 @@ $asset1 = 'http://localhost/hotelspondy/resources/assets/';
                  @if (Auth::user())
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/account') }}">Account</a></li>
+                    <li><a href="{{ url('/property') }}">Property</a></li>
                     <li><a href="{{ url('/offers') }}">Offers</a></li>
                     <li><a href="{{ url('/offer_list') }}">Edit/Delete Offers</a></li>
                 </ul>

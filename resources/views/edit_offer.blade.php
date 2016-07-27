@@ -18,7 +18,7 @@
                             <label for="name" class="col-md-4 control-label">Offer name</label>
 
                             <div class="col-md-8">
-                                <input id="name" type="text" class="form-control" name="name" ng-init="offer.name='{{$offer->offer_name}}'" ng-model='offer.name'>
+                                <input id="name" type="text" class="form-control" name="name" ng-init="offer.name='{{$offer->name}}'" ng-model='offer.name'>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -32,7 +32,7 @@
                             <label for="content" class="col-md-4 control-label">Content</label>
 
                             <div class="col-md-8">
-                                <textarea id="content" class="form-control" name="content" ng-model="offer.content" ng-init="offer.content='{{$offer->offer_content}}'" ></textarea>
+                                <textarea id="content" class="form-control" name="content" ng-model="offer.content" ng-init="offer.content='{{$offer->content}}'" ></textarea>
                                 @if ($errors->has('content'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
@@ -42,11 +42,14 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
-                            <label for="start_date" class="col-md-4 control-label">Start date</label>
+                            <!-- <label for="start_date" class="col-md-4 control-label">Start date</label> -->
+                            <label for="from" class="col-md-4 control-label">Start date</label>
 
                             <div class="col-md-8">
-<!--                                 <textarea id="starting date" class="form-control" name="starting date"></textarea> -->
-                                <input class="form-control" type="date" name="start_date" id="start_date" ng-init="offer.start_date='{{$offer->start_date}}'" ng-model="offer.start_date">
+                                <input class="form-control" type="text" id="from" name="start_date" ng-init="offer.start_date='{{$offer->start_date}}'" ng-model="offer.start_date">
+
+                                <!-- <input class="form-control" type="date" name="start_date" id="start_date" ng-init="offer.start_date='{{$offer->start_date}}'" ng-model="offer.start_date"> -->
+
 
                                 @if ($errors->has('start_date'))
                                     <span class="help-block">
@@ -57,11 +60,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
-                            <label for="end_date" class="col-md-4 control-label">End date</label>
-
+                            <!-- <label for="end_date" class="col-md-4 control-label">End date</label> -->
+                            <label for="to" class="col-md-4 control-label">End date</label>
                             <div class="col-md-8">
-<!--                                 <textarea id="starting date" class="form-control" name="starting date"></textarea> -->
-                                <input class="form-control" type="date" name="end_date" id="end_date" ng-init="offer.end_date='{{$offer->end_date}}'" ng-model="offer.end_date">
+                                
+                                <!-- <input class="form-control" type="date" name="end_date" id="end_date" ng-init="offer.end_date='{{$offer->end_date}}'" ng-model="offer.end_date">  -->
+                                <input class="form-control" type="text" id="to" name="end_date" ng-init="offer.end_date='{{$offer->end_date}}'" ng-model="offer.end_date">
 
                                 @if ($errors->has('end_date'))
                                     <span class="help-block">

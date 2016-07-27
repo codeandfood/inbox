@@ -52,6 +52,9 @@ Route::group(['middleware' => 'web'], function(){
 	    return view('account');
 	});
 
+
+	Route::resource('property','PropertyController');
+
 	//--Laila's county--/
 
 });

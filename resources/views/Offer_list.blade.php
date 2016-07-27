@@ -10,9 +10,10 @@
                 <div class="panel-heading">Edit or delete offers</div>
                 <div class="panel-body">
                     <p>
-                        @if($offer)
+                        @if($data)
                         <table style="width:100%">
                             <tr>
+                                <th>Property</th>
                                 <th>Offer Name</th>
                                 <th>Offer Content</th>
                                 <th>Offer Start Date</th>
@@ -23,16 +24,19 @@
                                 <th>Edit/Delete</th>
                             </tr>
 
-                            @foreach($offer as $key => $value)
-                            <tr>
-                                <td><?=$value->name;?></td>
-                                <td><?=$value->content;?></td>
-                                <td><?=$value->start_date;?></td>
-                                <td><?=$value->end_date;?></td>
-                                <td><?=$value->mobile;?></td>
-                                <td><?=$value->price;?></td>
-                                <td><a href="offers/<?=$value->id;?>/edit"><button type="submit">Edit</button></a><br><button ng-click="confirmDelete(<?=$value->id;?>)">Delete</button></td>
-                            </tr>
+                            @foreach($data['properties'] as $key => $value)
+                                @foreach($value->offers as $k =>$v)                            
+                                <tr>
+                                    <td><?=$value->name;?></td>
+                                    <td><?=$v->name;?></td>
+                                    <td><?=$v->content;?></td>
+                                    <td><?=$v->start_date;?></td>
+                                    <td><?=$v->end_date;?></td>
+                                    <td><?=$v->mobile;?></td>
+                                    <td><?=$v->price;?></td>
+                                    <td><a href="offers/<?=$v->id;?>/edit"><button type="submit">Edit</button></a><br><button ng-click="confirmDelete(<?=$v->id;?>)">Delete</button></td>
+                                </tr>
+                                @endforeach
                             @endforeach
                         </table>
                         @endif

@@ -11,6 +11,24 @@
 
                         {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('property_id') ? ' has-error' : '' }}">
+                            <label for="property_id" class="col-md-4 control-label">Property</label>
+
+                            <div class="col-md-6">
+                                <select id="property_id" type="text" class="form-control" name="property_id">
+                                    @foreach($data['properties'] as $key => $val)
+                                    <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('property_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('property_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Offer name</label>
 

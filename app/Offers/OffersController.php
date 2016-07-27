@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Offers\OffersModel;
-use App\Model\Properties;
+use App\Model\Property;
 use Log;
 use Validator;
 use Exception;
@@ -25,7 +25,11 @@ class OffersController extends Controller
 	}
 
 	public function index(){
-		return view('Offers');
+
+		$user = Auth::user();
+		$properties = Property::where('user_id', $user->id)->get();
+		$data['properties'] = $properties;
+		return view('Offers')->with('data', $data);
 	}
 
 	public function store(Request $request)
@@ -35,6 +39,7 @@ class OffersController extends Controller
 
 			$validator = Validator::make($request->all(), [
 	            'name' => 'required|max:50',
+	            'property_id' => 'required|integer',
 	            'content' => 'required',
 	            'start_date' => 'required|date',
 	            'end_date' => 'required|date|after:start_date',
@@ -48,6 +53,7 @@ class OffersController extends Controller
 	            throw new Exception($validator->errors()->all()[0], 1);
 	        }else{
 	            $offers = new OffersModel();
+	            $offers->property_id = $request['property_id'];
 	            $offers->name = $request['name'];
 	            $offers->content = $request['content'];
 	            $offers->start_date = $request['start_date'];
@@ -190,10 +196,17 @@ class OffersController extends Controller
 
     function offerList(){
 
-    	$user = Auth::user();
-    	$property = Properties::where('user_id', $user->id)->first();
-    	$offer = OffersModel::where('property_id',$property->id)->get();
-    	return View::make('Offer_list')->with('offer',$offer);
+    	try{
+	    	$user = Auth::user();
+	    	$property = Property::where('user_id', $user->id)->with('offers')->get();
+	    	// $offer = OffersModel::where('property_id',$property->id)->get();
+	    	$data['properties'] = $property;
+	    	// return ($property);exit();
+	    	return View::make('Offer_list')->with('data',$data);
+    	}catch(Exception $e){
+	    	return View::make('Offer_list')->with('offer',[]);
+    	}
+    	
     }
 }
 
