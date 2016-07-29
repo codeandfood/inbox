@@ -13,7 +13,6 @@
                     <form ><!-- class="form-horizontal" role="form" method="POST" action="{{ url('/offers/') }}/{{$offer->id}}/update" enctype="multipart/form-data" > -->
 
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Offer name</label>
 
@@ -95,7 +94,7 @@
                             <label for="price" class="col-md-4 control-label">Price</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="number" name="price" id="price" ng-init="offer.price='{{$offer->price}}'" ng-model="offer.price">
+                                <input class="form-control" type="text" name="price" id="price" ng-init="offer.price='{{$offer->price}}'" ng-model="offer.price">
 
                                 @if ($errors->has('price'))
                                     <span class="help-block">

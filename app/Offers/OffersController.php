@@ -39,11 +39,9 @@ class OffersController extends Controller
 
 			$validator = Validator::make($request->all(), [
 	            'name' => 'required|max:50',
-	            'property_id' => 'required|integer',
 	            'content' => 'required',
 	            'start_date' => 'required|date',
 	            'end_date' => 'required|date|after:start_date',
-	            'image' => 'required',
 	            'price' => 'required',
 	            'mobile' => 'required|max:20',
 	            'email' => 'required|email',
@@ -53,7 +51,7 @@ class OffersController extends Controller
 	            throw new Exception($validator->errors()->all()[0], 1);
 	        }else{
 	            $offers = new OffersModel();
-	            $offers->property_id = $request['property_id'];
+	            // $offers->property_id = $request['property_id'];
 	            $offers->name = $request['name'];
 	            $offers->content = $request['content'];
 	            $offers->start_date = $request['start_date'];
@@ -128,6 +126,17 @@ class OffersController extends Controller
 
     	$offer = OffersModel::where('id',$id)->first();
     	return View::make('edit_offer')->with('offer',$offer);
+
+    	// try{
+	    // 	$user = Auth::user();
+	    // 	$property = Property::where('user_id', $user->id)->with('offers')->get();
+	    // 	// $offer = OffersModel::where('property_id',$property->id)->get();
+	    // 	$data['properties'] = $property;
+	    // 	// return ($property);exit();
+	    // 	return View::make('Offer_list')->with('data',$data);
+    	// }catch(Exception $e){
+	    // 	return View::make('Offer_list')->with('offer',[]);
+    	// }
     }
 
     function update($id,request $request){
@@ -138,7 +147,6 @@ class OffersController extends Controller
 	        'content' => 'required',
 	        'start_date' => 'required|date',
 	        'end_date' => 'required|date',
-	        // 'image' => 'required',
 	        'price' => 'required',
 	        'mobile' => 'required|max:20',
 	        'email' => 'required|email'
@@ -152,8 +160,8 @@ class OffersController extends Controller
 	    		$offers= OffersModel::where('id',$id)->first();
 	    		$offers->name = $request['name'];
 	            $offers->content = $request['content'];
-	            $offers->start_date = $request['start_date'];
-	            $offers->end_date = $request['end_date'];
+	            $offers->start_date = date("Y-m-d",strtotime($request['start_date']));
+	            $offers->end_date = date("Y-m-d",strtotime($request['end_date']));
 	            $offers->price = $request['price'];
 	            $offers->mobile = $request['mobile'];
 	            $offers->email = $request['email'];
@@ -190,7 +198,8 @@ class OffersController extends Controller
 
     function destroy($id){
     	Log::info(__FUNCTION__.'====>');
-    	
+    	$image_name=OffersModel::where('id',$id)->value('image_name');
+    	File::delete(base_path()."/public/images/lailascounty/".$image_name);
     	OffersModel::where('id',$id)->delete();
     }
 

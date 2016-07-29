@@ -29,9 +29,11 @@ $asset1 = 'http://localhost/hotelspondy/resources/assets/';
         }
     </style>
 
+    <!-- datepicker -->
+
     <link rel="stylesheet" href="{{$asset}}css/jquery-ui.css">
     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-    <script src="{{$asset1}}js/jquery-1.12.4.js"></script>
+    <script src="{{$asset1}}js/jquery-1.12.4.js"></script>/
     <script src="{{$asset1}}js/jquery-ui.js"></script>
     <script>
       $( function() {
@@ -66,6 +68,7 @@ $asset1 = 'http://localhost/hotelspondy/resources/assets/';
         }
       } );
     </script>
+    <!-- datepicker -->
 
  
 
@@ -133,19 +136,25 @@ $asset1 = 'http://localhost/hotelspondy/resources/assets/';
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+    
+    <!-- Have conflicting error if there are 2 jquery defined -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     <!-- JavaScript2 -->
 
-    <script src="{{$asset}}js/jquery-1.10.2.js"></script>
+    <!-- <script src="{{$asset}}js/jquery-1.10.2.js"></script> -->
     <script src="{{$asset}}js/bootstrap.js"></script>
     <!-- <script src="{{$asset}}js/owl.carousel.js"></script> -->
     <!-- <script src="{{$asset}}js/script.js"></script> -->
     <script src="{{$asset1}}js/angular.1.5.7.min.js"></script>
     <script src="http://localhost/hotelspondy/public/app/app.js"></script>
-    <script src="http://localhost/hotelspondy/public/app/controllers/edit_offer.js"></script>
-  
+    <script src="http://localhost/hotelspondy/public/app/controllers/edit_delete_offer.js">
+    </script>
+    <script src="http://localhost/hotelspondy/public/app/controllers/create_offer.js">
+    </script>
 </body>
 </html>

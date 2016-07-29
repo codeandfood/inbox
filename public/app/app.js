@@ -8,3 +8,8 @@ var edit_delete_offer = angular.module('EditDeleteOfferApp', [], function($inter
     $interpolateProvider.endSymbol(']]');
 });
 
+var create_offer = angular.module('CreateOfferApp', [], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
+
