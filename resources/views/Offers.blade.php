@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Offers Postings</div>
                 <div class="panel-body" ng-app="CreateOfferApp" ng-controller="CreateOfferController">
-                    <form><!--  class="form-horizontal" role="form" method="POST" action="{{ url('/offers') }}" enctype="multipart/form-data" >
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data"><!--   method="POST" action="{{ url('/offers') }}"  >
  -->
                         {{ csrf_field() }}
 

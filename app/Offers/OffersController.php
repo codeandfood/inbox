@@ -166,6 +166,7 @@ class OffersController extends Controller
 	            $offers->mobile = $request['mobile'];
 	            $offers->email = $request['email'];
 	            // if we have a new image then delete then uplaod new one
+	            Log::info($request->hasFile('image'));exit();
 	            if ($request->hasFile('image')){
 	            	// var_dump(__DIR__."/../../public/images/lailascounty/".$offers->image_name);exit();
 	            	File::delete(base_path()."/public/images/lailascounty/".$offers->image_name);
