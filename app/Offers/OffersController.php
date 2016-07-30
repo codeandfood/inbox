@@ -26,6 +26,7 @@ class OffersController extends Controller
 
 	public function index(){
 
+		Log::info(__FUNCTION__.'====>');
 		$user = Auth::user();
 		$properties = Property::where('user_id', $user->id)->get();
 		$data['properties'] = $properties;
@@ -68,6 +69,7 @@ class OffersController extends Controller
 
 	            if(!$result):
 	            	throw new Exception("Sorry value not stored", 1);
+	            	Log::info('Value not entered in database');
 	            else:
 					Log::info('Value entered into database');
 
@@ -88,6 +90,7 @@ class OffersController extends Controller
 	}
 
 	function show($id){
+		Log::info(__FUNCTION__.'====>');
 		$offer = OffersModel::where('id', $id)->get();
 		return View::make('show')->with('offer',$offer);
 	}
@@ -96,6 +99,7 @@ class OffersController extends Controller
 	* 
 	*/
 	function getOffers(Request $request){
+		Log::info(__FUNCTION__.'====>');		
     	$offers = OffersModel::where('property_id', $request->id)->get();
     	foreach ($offers as $key => $value) 
     	{
@@ -105,6 +109,7 @@ class OffersController extends Controller
     		$response['count'] = count($offers);
     		if($time < $edata)
     		{
+    			Log::info($value['name']." offer found  with end date being :".$edata);
 	    		$response['offers'][$key]['offer_name'] = $value['name'];
 	    		$response['offers'][$key]['offer_content'] = $value['content'];
 	    		$response['offers'][$key]['offer_price'] = $value['price'];
@@ -114,6 +119,7 @@ class OffersController extends Controller
 	    		$response['offers'][$key]['offer_image'] = $value['image_name'];
     		}
     		else{
+    			Log::info($value['name']." offer has already expired.");
     			$response['count'] = 0;
     			$response['message'] = 'No offers found.';
     		}
@@ -199,13 +205,15 @@ class OffersController extends Controller
 
     function destroy($id){
     	Log::info(__FUNCTION__.'====>');
+    	$name=OffersModel::where('id',$id)->value('name');
     	$image_name=OffersModel::where('id',$id)->value('image_name');
     	File::delete(base_path()."/public/images/lailascounty/".$image_name);
     	OffersModel::where('id',$id)->delete();
+    	Log::info($name." offer has been successfully deleted");
     }
 
     function offerList(){
-
+    	Log::info(__FUNCTION__.'====>');
     	try{
 	    	$user = Auth::user();
 	    	$property = Property::where('user_id', $user->id)->with('offers')->get();
