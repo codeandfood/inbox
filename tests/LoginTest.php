@@ -25,7 +25,7 @@ class LoginTest extends TestCase
     		->seePageIs('/login');
     }
 
-    public function testWrongValues(){
+    public function testWrongEmail(){
     	$this->visit('/login')
     		->type('blabla','email')
     		->type('bla','password')
@@ -42,6 +42,7 @@ class LoginTest extends TestCase
     }
 
     public function testCorrectData(){
+
     	$this->visit('/login')
     		->type('admin@gmail.com','email')
     		->type('12345678','password')

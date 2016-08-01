@@ -7,7 +7,14 @@
             <div class="panel panel-default">
 
                 
-                <div class="panel-heading">Edit or delete offers</div>
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Edit or delete offers</h4>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" href="http://localhost/hotelspondy/offers">
+                        Add Offer
+                        </a>
+                    </div>
+                </div>
                 <div class="panel-body">
                     <p>
                         @if($data)

@@ -70,7 +70,16 @@ $asset1 = 'http://localhost/hotelspondy/resources/assets/';
     </script>
     <!-- datepicker -->
 
- 
+    <!-- add offer modal form  -->
+    <script>
+    $(function() {
+        $('#myModal').on("show.bs.modal", function (e) {
+            e.preventdefault();
+        });
+    });
+    </script>
+    <!-- add offer modal form  -->
+
 
  
 
